@@ -19,6 +19,13 @@ header{
     cursor: pointer;
 }
 
+#lista_usuario{
+    margin-top: 30px;
+    display: flex;
+    height: 50%;
+    width: 23%;
+}
+
 .conteudo_logo{
     display: flex;
     height: 63px;
