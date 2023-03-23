@@ -23,6 +23,7 @@ const getUsuarios = function(){
 
 const getContatosUsuario = function ($nome) {
 
+    const listaContatos = {}
     const nomeUsuarioPrincipal = $nome
     const usuarioPrincipalContatos = []
     let status = false
@@ -51,15 +52,16 @@ const getContatosUsuario = function ($nome) {
         }
     })
 
+    listaContatos.contatos = usuarioPrincipalContatos
     if(status){
-        return usuarioPrincipalContatos
+        return listaContatos
         //return JSON.stringify(usuarioPrincipalContatos)
     }else{
         return status
     }
 }
-  
-//getContatosUsuario("Ricardo da Silva")
+
+console.log(getContatosUsuario("Ricardo da Silva"))
 module.exports = {
     getUsuarios,
     getContatosUsuario

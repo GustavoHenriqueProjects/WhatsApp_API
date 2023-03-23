@@ -28,16 +28,20 @@ const getListaUsuarios = async () => {
         listaDeUsuarios.append(option)
         }
     ) 
-
-    const select = document.querySelector('#lista_usuario')
-
-    select.addEventListener('change', async function () {
-    const usuario = select.value
-    const contatos = await getContatos(usuario)
-    console.log(contatos)
-    
-    
-})
 }
 
 getListaUsuarios()
+
+
+const getListaContatos = async ($usuario) => {
+        const contatos = await getContatos($usuario)
+        return {
+            ...contatos
+        }
+}
+console.log(getListaContatos)
+
+export{
+    getListaUsuarios,
+    getListaContatos
+}

@@ -28,7 +28,7 @@ app.use('/v1/whatsapp/usuarios', cors(), async function(request, response, next)
     const usuarios = dadosWhatsApp.getUsuarios()
     let statusCode = 200
     response.status(statusCode)
-    response.json(usuarios)    
+    response.json(usuarios)  
     /*for(let cont = 0; cont < usuarios.usuarios.length; cont++){
         const nome = usuario.usuarios[cont].apelido
         console.log(nome)

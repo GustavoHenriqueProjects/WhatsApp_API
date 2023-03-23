@@ -8,9 +8,17 @@
 //Ajuda a policiar o código, o uso das váriaveis.
 'use strict'
 
-import { contatos } from "./contatos.js"
+//import { contatos } from "./contatos.js"
+import { getListaContatos } from "./dados.js"
 
-console.log(contatos[0].messages[3])
+const select = document.querySelector('#lista_usuario')
+select.addEventListener('change', async function () {
+const usuario = select.value
+const contatos = await getListaContatos(usuario)
+
+
+
+//console.log(contatos[0].messages[3])
 
 var cont = 0
 
@@ -29,7 +37,7 @@ const criarNovaLista = (contato) => {
   img.alt = 'Foto de perfil'
 
   //Pagando as sequencia das imagens no JSON
-  img.src = `./imagens_aplicativo/${contato.image}`
+  img.src = `${contato.image}`
 
   //Criando uma div chamada titulo_texto 
   const titulo_texto = document.createElement('div')
@@ -69,7 +77,7 @@ const carregarWhatsApp = () => {
   const conteudoLista = document.getElementById('conteudo-lista')
 
   // Chama a função criarNovaLista, e para cada elemento da matriz cria uma nova matriz
-  const criarLista = contatos.map(criarNovaLista)
+  const criarLista = contatos.contatos.map(criarNovaLista)
 
   conteudoLista.replaceChildren(...criarLista)
 }
@@ -167,7 +175,7 @@ const mensagen = (mensagem) => {
 
 const carregarMensagem = ($id) => {
   const conteudoLista = document.getElementById('container');
-  const criarLista = contatos
+  const criarLista = contatos.contatos
     .filter((contato, index) => index === $id) // filtra pelo índice igual a $id
     .map((contato) => mensagen(contato)); // cria a lista de mensagens usando mensagen()
   conteudoLista.replaceChildren(...criarLista);
@@ -177,3 +185,5 @@ const carregarMensagem = ($id) => {
   enviaMensagem.classList.add('envia_mensagemFlex')
 
 };
+
+})
